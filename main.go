@@ -17,8 +17,10 @@ func init() {
 }
 
 func main() {
+	log.Println("starting imersao-simulator")
 	msgChan := make(chan *ckafka.Message)
 	consumer := kafka.NewKafkaConsumer(msgChan)
+	log.Println("starting consumer")
 	go consumer.Consume()
 
 	for msg := range msgChan {
